@@ -16,7 +16,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::get('/posts',function (){
+    $cat = \App\Models\Categories::all();
+    foreach($cat as $c) {
+        echo $c['category_name'];
+        foreach ($c->posts as $ca){
+            echo $ca['title'];
+        }
+    }
+});
 Route::middleware("auth")->group(function(){
     Route::get('/logout',[\App\Http\Controllers\AuthController::class, 'logout'])->name('logout');
 
@@ -24,16 +32,7 @@ Route::middleware("auth")->group(function(){
         return view("home");
     })->name('home');
 //    Route::get('/posts',[\App\Http\Controllers\PostsController::class,'index'])->name('allPosts');
-    Route::get('/posts',function (){
-        $cat = \App\Models\Categories::all();
-        foreach($cat as $c) {
-            echo '<b> Category </b>' . $c['category_name'];
-            foreach ($c->posts as $ca){
-                echo '<b> title </b>' . $ca['title'];
-            }
-            echo '<br>';
-        }
-    });
+
 });
 
 Route::middleware("guest")->group(function(){

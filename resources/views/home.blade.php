@@ -9,6 +9,9 @@
     <link rel="stylesheet" type="text/css" href="/css/app.css">
 </head>
 <body>
-<h1>Home page</h1>
+    <div id="app">
+        <post-index></post-index>
+    </div>
+    <script src="./js/app.js"></script>
 </body>
 </html>
