@@ -10,6 +10,9 @@
     @auth("web")
         <div class="topnav">
             <a class="active" href="{{route("logout")}}">Logout</a>
+            <a href="{{route("showCategories")}}">Categories</a>
+            <a href="{{route("showPosts")}}">Posts</a>
+            <a href="{{route("home")}}">All</a>
         </div>
     @endauth
 

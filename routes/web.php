@@ -16,21 +16,30 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/posts',function (){
-    $cat = \App\Models\Categories::all();
-    foreach($cat as $c) {
-        echo $c['category_name'];
-        foreach ($c->posts as $ca){
-            echo $ca['title'];
-        }
-    }
-});
+//Route::get('/posts',function (){
+//    $cat = \App\Models\Categories::all();
+//    foreach($cat as $c) {
+//        echo $c['category_name'];
+//        foreach ($c->posts as $ca){
+//            echo $ca['title'];
+//        }
+//    }
+//});
 Route::middleware("auth")->group(function(){
     Route::get('/logout',[\App\Http\Controllers\AuthController::class, 'logout'])->name('logout');
 
     Route::get('/home',function(){
         return view("home");
     })->name('home');
+
+    Route::get('/showCategories',function (){
+        return view('categories');
+    })->name('showCategories');
+
+    Route::get('/showPosts',function (){
+        return view('posts');
+    })->name('showPosts');
+
 //    Route::get('/posts',[\App\Http\Controllers\PostsController::class,'index'])->name('allPosts');
 
 });

@@ -1,7 +1,12 @@
 <template>
-    test data1111
-    <div v-for="data in data">
-        {{ data.title}}
+    <div v-for="post in posts">
+        Категория: {{ post.category_name }} <br>
+        Посты:
+        <div v-for="p in post.posts">
+            {{ p.title }}
+        </div>
+        <br>
+        -----------------------
     </div>
 <!--    {{ data }}-->
 </template>
@@ -10,13 +15,13 @@
 export default {
     data(){
         return{
-            data: []
+            posts: []
         }
     },
 
     mounted(){
-        axios.get('/posts').then(response=>{
-            this.data = response.data;
+        axios.get('/api/posts').then(response=>{
+            this.posts = response.data;
         })
     }
 }
