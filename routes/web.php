@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+//use Illuminate\Support\Facades\Notification;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,15 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 })->name('start');
 Route::get('/send',[\App\Http\Controllers\mailController::class,'sendMail']);
-//Route::get('/posts',function (){
-//    $cat = \App\Models\Categories::all();
-//    foreach($cat as $c) {
-//        echo $c['category_name'];
-//        foreach ($c->posts as $ca){
-//            echo $ca['title'];
-//        }
-//    }
-//});
+
 Route::middleware("auth")->group(function(){
     Route::get('/logout',[\App\Http\Controllers\AuthController::class, 'logout'])->name('logout');
 
@@ -44,6 +36,8 @@ Route::middleware("auth")->group(function(){
     Route::post('/createPost',[\App\Http\Controllers\Api\PostController::class,'createPost'])->name('createPost');
     Route::get('/createPostForm',[\App\Http\Controllers\Api\PostController::class,'createPostForm'])->name('createPostForm');
 //    Route::get('/posts',[\App\Http\Controllers\PostsController::class,'index'])->name('allPosts');
+//    Notification::route('telegram', '1867965641')
+//        ->notify(new \App\Notifications\Telegram);
 
 });
 
