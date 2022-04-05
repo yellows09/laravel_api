@@ -9,4 +9,5 @@ class CategoriesPosts extends Model
 {
     use HasFactory;
     protected $table = 'categories_posts';
+    protected $fillable=['posts_id','categories_id'];
 }

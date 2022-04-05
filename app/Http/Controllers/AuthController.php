@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\NewUserRegistered;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -53,6 +54,8 @@ class AuthController extends Controller
         if($user){
             auth("web")->login($user);
         }
+//        event(new NewUserRegistered($request));
+
         return redirect(route('home'));
     }
 }

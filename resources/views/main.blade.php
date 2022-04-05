@@ -13,6 +13,7 @@
             <a href="{{route("showCategories")}}">Categories</a>
             <a href="{{route("showPosts")}}">Posts</a>
             <a href="{{route("home")}}">All</a>
+            <a href="{{route("createPostForm")}}">Create a post</a>
         </div>
     @endauth
 

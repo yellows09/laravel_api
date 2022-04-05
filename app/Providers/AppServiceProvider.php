@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Events\NewUserRegistered;
+use App\Models\User;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
