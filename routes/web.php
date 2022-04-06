@@ -32,6 +32,7 @@ Route::middleware("auth")->group(function(){
     Route::get('/showPosts',function (){
         return view('posts');
     })->name('showPosts');
+//    Route::get('/showPosts',[\App\Http\Controllers\Api\PostController::class,'index'])->name('showPosts');
 
     Route::post('/createPost',[\App\Http\Controllers\Api\PostController::class,'createPost'])->name('createPost');
     Route::get('/createPostForm',[\App\Http\Controllers\Api\PostController::class,'createPostForm'])->name('createPostForm');

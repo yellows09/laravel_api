@@ -1,5 +1,8 @@
 <template>
     <div v-for="post in posts">
+<!--        <div v-for="postInfo in post.posts">-->
+<!--            {{postInfo.title}}-->
+<!--        </div>-->
         Категория: {{ post.category_name }} <br>
         Посты:
         <div v-for="p in post.posts">

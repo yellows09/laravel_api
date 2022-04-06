@@ -1,7 +1,7 @@
 @include('main')
 @yield('nav')
 <br>
-<form action="{{route('createPost')}}" method="post">
+<form action="{{route('createPost',['id'=>'serrr'])}}" method="post">
     @csrf
     <input type="text" name = 'title'>
     <input type="text" name = 'description'>
