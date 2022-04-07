@@ -1,5 +1,5 @@
 <template>
-    <div v-for="category in categories">
+    <div v-for="category in categories.data">
         {{ category.category_name }}
     </div>
 </template>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\PostResource;
 use App\Models\Categories;
 use App\Models\CategoryPost;
 use App\Models\Posts;
@@ -11,16 +12,15 @@ use Illuminate\Support\Arr;
 
 class PostController extends Controller
 {
-    public function index()
+    public function index(Categories $categories)
     {
-        $categories = Categories::all();
-//        return view('posts',['categories'=>$categories]);
-        return Categories::with('posts')->get();
+//        return Categories::with('posts')->get();
+        return PostResource::collection(Categories::with('posts')->get());
+//        return PostResource::collection(Categories::all());
     }
 
     public function createPost(Request $request)
     {
-//        $categories->fill($request->all())->save();
         $p = Posts::create([
             'title' => $request->title,
             'description' => $request->description,

@@ -1,5 +1,5 @@
 <template>
-    <div v-for="post in posts">
+    <div v-for="post in posts.data">
 <!--        <div v-for="postInfo in post.posts">-->
 <!--            {{postInfo.title}}-->
 <!--        </div>-->
