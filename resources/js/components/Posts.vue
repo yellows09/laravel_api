@@ -1,15 +1,17 @@
 <template>
-    <div v-for="post in posts.data">
-        <div v-for="p in post.posts">
-            {{ p.title }} <br>
-            {{ p.description }}
-            <br>
-            --------------------------------------------
+    <div>
+        <div v-for="post in posts.data">
+            <div v-for="p in post.posts">
+                {{ p.title }} <br>
+                {{ p.description }}
+                <br>
+                --------------------------------------------
+            </div>
         </div>
+        <!--    <div v-for="post in posts">-->
+        <!--        {{ post }}-->
+        <!--    </div>-->
     </div>
-<!--    <div v-for="post in posts">-->
-<!--        {{ post }}-->
-<!--    </div>-->
 </template>
 
 <script>

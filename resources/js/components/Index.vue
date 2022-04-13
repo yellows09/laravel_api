@@ -1,17 +1,16 @@
 <template>
-    <div v-for="post in posts.data">
-<!--        <div v-for="postInfo in post.posts">-->
-<!--            {{postInfo.title}}-->
-<!--        </div>-->
-        Категория: {{ post.category_name }} <br>
-        Посты:
-        <div v-for="p in post.posts">
-            {{ p.title }}
+    <div>
+        <div v-for="post in posts.data">
+            Категория: {{ post.category_name }} <br>
+            Посты:
+            <div v-for="p in post.posts">
+                {{ p.title }}
+            </div>
+            <br>
+            -----------------------
         </div>
-        <br>
-        -----------------------
+        <!--    {{ data }}-->
     </div>
-<!--    {{ data }}-->
 </template>
 
 <script>

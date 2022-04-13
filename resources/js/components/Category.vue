@@ -1,6 +1,8 @@
 <template>
-    <div v-for="category in categories.data">
-        {{ category.category_name }}
+    <div>
+        <div v-for="category in categories.data">
+            {{ category.category_name }}
+        </div>
     </div>
 </template>
 
