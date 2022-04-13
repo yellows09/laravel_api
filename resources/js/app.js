@@ -9,6 +9,7 @@ import App from './components/App'
 import Index from './components/Index'
 import Categories from './components/Category'
 import Posts from './components/Posts'
+import createPost from './components/createPost'
 
 const router = new VueRouter({
     mode: 'history',
@@ -27,6 +28,11 @@ const router = new VueRouter({
             path: '/posts',
             name: 'Posts',
             component: Posts
+        },
+        {
+            path: '/createPost',
+            name: 'createPost',
+            component: createPost
         },
     ]
 })
