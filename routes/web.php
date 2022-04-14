@@ -44,11 +44,11 @@ Route::get('/{any}',[\App\Http\Controllers\MainController::class,'index'])->wher
 //});
 //
 //Route::middleware("guest")->group(function(){
-//    Route::get('/registration',[\App\Http\Controllers\AuthController::class, 'registerForm'])->name('registration');
-//    Route::post('/registration_process',[\App\Http\Controllers\AuthController::class, 'register'])->name('registration_process');
+//Route::get('/registration',[\App\Http\Controllers\AuthController::class, 'registerForm'])->name('registration');
+//Route::post('/registration_process',[\App\Http\Controllers\AuthController::class, 'register'])->name('registration_process');
 //
-//    Route::get('/login',[\App\Http\Controllers\AuthController::class, 'loginForm'])->name('login');
-//    Route::post('/login_process',[\App\Http\Controllers\AuthController::class, 'login'])->name('login_process');
+//Route::get('/login',[\App\Http\Controllers\AuthController::class, 'loginForm'])->name('login');
+//Route::post('/login_process',[\App\Http\Controllers\AuthController::class, 'login'])->name('login_process');
 //});
 //
 

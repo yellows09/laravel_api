@@ -3,7 +3,7 @@
         <input type="text" v-model="fields.title" placeholder="Заголовок">
         <input type="text" v-model="fields.description" placeholder="Тело поста" name = 'description'>
         <input type="text" v-model="fields.category_name" placeholder="Название категории" name = 'category_name'>
-        <button type="submit" class="text-center w-full bg-blue-900 rounded-md text-white py-3 font-medium">Создать</button>
+        <button type="submit">Создать</button>
     </form>
 </template>
 

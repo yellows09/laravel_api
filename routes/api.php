@@ -19,7 +19,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 Route::get('/posts',[App\Http\Controllers\Api\PostController::class,'index']);
 
+Route::get('/post/{id}',[App\Http\Controllers\Api\PostController::class,'show']);
+
+Route::post('/postUpdate/{id}',[App\Http\Controllers\Api\PostController::class,'update']);
+
 Route::post('/createPost',[\App\Http\Controllers\Api\PostController::class,'createPost']);
+
+Route::post('/deletePost',[\App\Http\Controllers\Api\PostController::class,'deletePost']);
 
 Route::get('/allData',[App\Http\Controllers\Api\PostController::class,'index'])->name('allData');
 

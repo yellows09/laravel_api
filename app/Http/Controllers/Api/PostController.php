@@ -3,20 +3,20 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\CategoryResource;
 use App\Http\Resources\PostResource;
 use App\Models\Categories;
 use App\Models\CategoryPost;
 use App\Models\Posts;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
     public function index(Categories $categories)
     {
-//        return Categories::with('posts')->get();
         return PostResource::collection(Categories::with('posts')->get());
-//        return PostResource::collection(Categories::all());
     }
 
     public function createPost(Request $request)
@@ -32,8 +32,22 @@ class PostController extends Controller
         $categories->posts()->attach($p->id);
     }
 
+    public function deletePost(Request $request){
+        var_dump($request);
+//        dd($request);
+    }
+
     public function createPostForm()
     {
         return view('createPostForm');
+    }
+
+    public function show(Request $request){
+//        return new CategoryResource($posts);
+        return Posts::find($request->id);
+    }
+
+    public function update(Posts $posts,Request $request){
+        return Posts::where('id',$request->id)->update(['title'=>$request->title]);
     }
 }
