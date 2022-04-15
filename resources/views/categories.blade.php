@@ -9,9 +9,13 @@
     <link rel="stylesheet" type="text/css" href="/css/app.css">
 </head>
 <body>
-<div id="categories">
-    <category-index></category-index>
+<div>
+    @foreach($categories as $category)
+        <?=$category->category_name?>
+            <br>
+        -----------------------------
+            <br>
+    @endforeach
 </div>
-<script src="./js/app.js"></script>
 </body>
 </html>

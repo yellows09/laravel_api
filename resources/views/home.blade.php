@@ -9,9 +9,14 @@
     <link rel="stylesheet" type="text/css" href="/css/app.css">
 </head>
 <body>
-    <div id="app">
-        <post-index></post-index>
-    </div>
-    <script src="./js/app.js"></script>
+    @foreach($posts as $p)
+        <b>Категория:</b> <?=$p->category_name?>
+        @foreach($p['posts'] as $one)
+            <b>Пост:</b> <a href="showPost/<?=$one['id']?>"><?=$one['title']?></a>
+        @endforeach
+        <br>
+        --------------------------------------------
+        <br>
+    @endforeach
 </body>
 </html>

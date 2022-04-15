@@ -16,7 +16,20 @@ class PostController extends Controller
 {
     public function index(Categories $categories)
     {
-        return PostResource::collection(Categories::with('posts')->get());
+        $posts = PostResource::collection(Categories::with('posts')->get());
+        return view('home',['posts'=>$posts]);
+    }
+
+    public function posts()
+    {
+        $posts = Posts::all();
+        return view('posts',['posts'=>$posts]);
+    }
+
+    public function categories()
+    {
+        $categories = Categories::all();
+        return view('categories',['categories'=>$categories]);
     }
 
     public function createPost(Request $request)
