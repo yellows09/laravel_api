@@ -20,6 +20,12 @@ class PostController extends Controller
         return view('home',['posts'=>$posts]);
     }
 
+    public function indexJson(Categories $categories)
+    {
+        $posts = PostResource::collection(Categories::with('posts')->get());
+        return $posts;
+    }
+
     public function posts()
     {
         $posts = Posts::all();

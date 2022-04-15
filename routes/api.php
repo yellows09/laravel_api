@@ -17,15 +17,18 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::get('/posts',[App\Http\Controllers\Api\PostController::class,'index']);
 
-Route::get('/post/{id}',[App\Http\Controllers\Api\PostController::class,'show']);
+Route::middleware('auth_api')->group(function () {
+    Route::get('/posts', [App\Http\Controllers\Api\PostController::class, 'index']);
 
-Route::post('/postUpdate/{id}',[App\Http\Controllers\Api\PostController::class,'update']);
+    Route::get('/post/{id}', [App\Http\Controllers\Api\PostController::class, 'show']);
 
-Route::post('/createPost',[\App\Http\Controllers\Api\PostController::class,'createPost']);
+    Route::post('/postUpdate/{id}', [App\Http\Controllers\Api\PostController::class, 'update']);
 
-Route::post('/deletePost',[\App\Http\Controllers\Api\PostController::class,'deletePost']);
+    Route::post('/createPost', [\App\Http\Controllers\Api\PostController::class, 'createPost']);
 
-Route::get('/allData',[App\Http\Controllers\Api\PostController::class,'index'])->name('allData');
+    Route::post('/deletePost', [\App\Http\Controllers\Api\PostController::class, 'deletePost']);
+
+    Route::get('/allData', [App\Http\Controllers\Api\PostController::class, 'indexJson'])->name('allData');
+});
 
