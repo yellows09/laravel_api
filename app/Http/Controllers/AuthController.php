@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Events\NewUserRegistered;
+use App\Jobs\ForgotPasswordJob;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -54,7 +55,13 @@ class AuthController extends Controller
         if($user){
             auth("web")->login($user);
         }
+        // call an event
 //        event(new NewUserRegistered($request));
+
+        //call a queue
+//        $this->dispatch(new ForgotPasswordJob(collect($request)));
+//        dispatch(new ForgotPasswordJob($request));
+//        ForgotPasswordJob::dispatch($request);
 
         return redirect(route('home'));
     }
