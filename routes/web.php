@@ -12,8 +12,6 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-//Route::get('/{any}',[\App\Http\Controllers\MainController::class,'index'])->where('any','.*');
 Route::get('/', function () {
     return view('welcome');
 })->name('start');
@@ -31,6 +29,8 @@ Route::middleware("auth")->group(function(){
     Route::get('/showCategories',[\App\Http\Controllers\Api\PostController::class,'categories'])->name('showCategories');
 
     Route::get('/showPosts',[\App\Http\Controllers\Api\PostController::class,'posts'])->name('showPosts');
+
+    Route::post('/deletePost',[\App\Http\Controllers\Api\PostController::class,'deletePost'])->name('deletePost');
 
     Route::get('/showPost/{id}',[\App\Http\Controllers\Api\PostController::class,'show']);
 //    Route::get('/showPosts',[\App\Http\Controllers\Api\PostController::class,'index'])->name('showPosts');

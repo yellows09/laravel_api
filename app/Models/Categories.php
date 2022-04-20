@@ -13,4 +13,13 @@ class Categories extends Model
     public function posts(){
         return $this->belongsToMany(Posts::class,'category_post','category_id','post_id');
     }
+
+//    public static function boot() {
+//        parent::boot();
+//
+//        static::deleting(function($user) { // before delete() method call this
+//            $user->posts()->delete();
+//            // do the rest of the cleanup...
+//        });
+//    }
 }

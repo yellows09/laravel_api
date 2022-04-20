@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\FilterRequest;
 use App\Http\Resources\CategoryResource;
 use App\Http\Resources\PostResource;
 use App\Models\Categories;
@@ -28,7 +29,7 @@ class PostController extends Controller
 
     public function posts()
     {
-        $posts = Posts::all();
+        $posts = Posts::paginate(5);
         return view('posts',['posts'=>$posts]);
     }
 
@@ -52,8 +53,8 @@ class PostController extends Controller
     }
 
     public function deletePost(Request $request){
-        var_dump($request);
-//        dd($request);
+        $delete = Posts::where('id',$request->id)->first()->delete();
+        return $delete;
     }
 
     public function createPostForm()

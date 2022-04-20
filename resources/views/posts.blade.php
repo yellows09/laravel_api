@@ -12,6 +12,15 @@
 <div>
     @foreach($posts as $post)
         <?=$post->title?>
+
+            <form method="POST" action="{{route('deletePost',['id' => $post->id])}}">
+                {{ csrf_field() }}
+                {{ method_field('POST') }}
+
+                <div class="form-group">
+                    <input type="submit" class="btn btn-danger delete-user" value="Delete post">
+                </div>
+            </form>
             <br>
         -----------------------------------------
             <br>

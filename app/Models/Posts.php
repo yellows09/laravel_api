@@ -9,7 +9,7 @@ class Posts extends Model
 {
     use HasFactory;
     protected $fillable=['id','title','description'];
-    public function categories(){
-        return $this->belongsToMany(Categories::class);
-    }
+//    public function categories(){
+//        return $this->belongsToMany(Categories::class);
+//    }
 }
