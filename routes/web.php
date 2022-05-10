@@ -12,9 +12,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', function () {
-    return view('welcome');
-})->name('start');
+Route::get('/test', [\App\Http\Controllers\MainController::class,'index']);
+
 Route::get('/send',[\App\Http\Controllers\mailController::class,'sendMail']);
 
 Route::get('/forgotPassword',[\App\Http\Controllers\Api\UserController::class,'forgotPassword'])->name('forgotPassword');
