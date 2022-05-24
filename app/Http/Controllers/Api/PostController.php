@@ -8,6 +8,7 @@ use App\Http\Resources\CategoryResource;
 use App\Http\Resources\PostResource;
 use App\Models\Categories;
 use App\Models\CategoryPost;
+use App\Models\Post;
 use App\Models\Posts;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
@@ -16,13 +17,17 @@ use Jenssegers\Agent\Agent;
 
 class PostController extends Controller
 {
-    public function index(Categories $categories)
+    public function index(Categories $categories, FilterRequest $request)
     {
 //        $posts = Posts::paginate(5);
 //        $categories = Categories::all();
-//        return view('home',['posts'=>$posts,'categories'=>$categories]);
-        $se = \Jenssegers\Agent\Facades\Agent::browser();
-        return view('home',['se'=>$se]);
+        $request = $request->validated();
+        $query = Posts::query();
+        if (isset($request['title'])) {
+            $query->where('title','like',"%{$request['title']}%");
+        }
+        $posts = $query->get();
+        return view('home', ['posts' => $posts, 'categories' => $categories]);
     }
 
     public function indexJson(Categories $categories)
@@ -34,13 +39,13 @@ class PostController extends Controller
     public function posts()
     {
         $posts = Posts::paginate(5);
-        return view('posts',['posts'=>$posts]);
+        return view('posts', ['posts' => $posts]);
     }
 
     public function categories()
     {
         $categories = Categories::all();
-        return view('categories',['categories'=>$categories]);
+        return view('categories', ['categories' => $categories]);
     }
 
     public function createPost(Request $request)
@@ -56,8 +61,9 @@ class PostController extends Controller
         $categories->posts()->attach($p->id);
     }
 
-    public function deletePost(Request $request){
-        $delete = Posts::where('id',$request->id)->first()->delete();
+    public function deletePost(Request $request)
+    {
+        $delete = Posts::where('id', $request->id)->first()->delete();
         return $delete;
     }
 
@@ -66,12 +72,14 @@ class PostController extends Controller
         return view('createPostForm');
     }
 
-    public function show(Request $request){
+    public function show(Request $request)
+    {
 //        return new CategoryResource($posts);
         return Posts::find($request->id);
     }
 
-    public function update(Posts $posts,Request $request){
-        return Posts::where('id',$request->id)->update(['title'=>$request->title]);
+    public function update(Posts $posts, Request $request)
+    {
+        return Posts::where('id', $request->id)->update(['title' => $request->title]);
     }
 }
