@@ -12,13 +12,17 @@ use App\Models\Posts;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
+use Jenssegers\Agent\Agent;
 
 class PostController extends Controller
 {
     public function index(Categories $categories)
     {
-        $posts = PostResource::collection(Categories::with('posts')->get());
-        return view('home',['posts'=>$posts]);
+//        $posts = Posts::paginate(5);
+//        $categories = Categories::all();
+//        return view('home',['posts'=>$posts,'categories'=>$categories]);
+        $se = \Jenssegers\Agent\Facades\Agent::browser();
+        return view('home',['se'=>$se]);
     }
 
     public function indexJson(Categories $categories)

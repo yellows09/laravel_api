@@ -9,10 +9,11 @@
     <link rel="stylesheet" type="text/css" href="/css/app.css">
 </head>
 <body>
-    @foreach($posts as $p)
-        <b>Категория:</b> <?=$p->category_name?>
-        @foreach($p['posts'] as $one)
-            <b>Пост:</b> <a href="showPost/<?=$one['id']?>"><?=$one['title']?></a>
+@dd($se)
+    @foreach($categories as $cat)
+        <b>Категория:</b> <?=$cat->category_name?>
+        @foreach($posts as $p)
+            <b>Пост:</b> <a href="showPost/<?=$p->id?>"><?=$p->title?></a>
         @endforeach
         <br>
         --------------------------------------------

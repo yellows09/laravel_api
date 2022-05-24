@@ -3,6 +3,7 @@
 namespace App\Http;
 
 use App\Http\Middleware\AuthenticateApi;
+use App\Http\Middleware\CheckBrowser;
 use Illuminate\Auth\Middleware\Authenticate;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
@@ -66,5 +67,6 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+        'CheckBrowser' => CheckBrowser::class
     ];
 }
