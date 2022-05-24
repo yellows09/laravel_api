@@ -19,15 +19,17 @@ class PostController extends Controller
 {
     public function index(Categories $categories, FilterRequest $request)
     {
-//        $posts = Posts::paginate(5);
-//        $categories = Categories::all();
-        $request = $request->validated();
-        $query = Posts::query();
-        if (isset($request['title'])) {
-            $query->where('title','like',"%{$request['title']}%");
-        }
-        $posts = $query->get();
+        $posts = Posts::paginate(5);
+        $categories = Categories::all();
         return view('home', ['posts' => $posts, 'categories' => $categories]);
+    }
+
+    public function filterPosts(FilterRequest $request){
+        $request = $request->validated();
+        if (isset($request['title'])) {
+            $posts = Posts::where('title','like',"%{$request['title']}%")->get();
+        }
+        return view('filtered', ['posts' => $posts]);
     }
 
     public function indexJson(Categories $categories)

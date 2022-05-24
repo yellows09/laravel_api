@@ -27,6 +27,8 @@ Route::middleware("CheckBrowser")->group(function () {
 
         Route::get('/home', [\App\Http\Controllers\Api\PostController::class, 'index'])->name('home');
 
+        Route::get('/filterPosts', [\App\Http\Controllers\Api\PostController::class, 'filterPosts'])->name('filtered');
+
         Route::get('/showCategories', [\App\Http\Controllers\Api\PostController::class, 'categories'])->name('showCategories');
 
         Route::get('/showPosts', [\App\Http\Controllers\Api\PostController::class, 'posts'])->name('showPosts');

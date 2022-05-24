@@ -9,7 +9,6 @@
     <link rel="stylesheet" type="text/css" href="/css/app.css">
 </head>
 <body>
-@dd($posts)
 @foreach($categories as $cat)
     <b>Категория:</b> <?=$cat->category_name?>
         @foreach($posts as $p)
