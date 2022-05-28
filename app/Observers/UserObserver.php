@@ -15,10 +15,10 @@ class UserObserver
      */
     public function created(User $user)
     {
-        Mail::send(['text'=>'mail'],['name','Laravel test api'], function ($message){
-            $message->to(request()->email,'Laravel api test project1')->subject('Вы создали аккаунт!');
-            $message->from('efremovsergey09@gmail.com','Laravel api test project');
-        });
+//        Mail::send(['text'=>'mail'],['name','Laravel test api'], function ($message){
+//            $message->to(request()->email,'Laravel api test project1')->subject('Вы создали аккаунт!');
+//            $message->from('efremovsergey09@gmail.com','Laravel api test project');
+//        });
     }
 
     /**

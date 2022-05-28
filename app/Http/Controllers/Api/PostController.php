@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Filter\PostFilter;
 use App\Http\Requests\FilterRequest;
 use App\Http\Resources\CategoryResource;
 use App\Http\Resources\PostResource;
@@ -26,6 +27,9 @@ class PostController extends Controller
 
     public function filterPosts(FilterRequest $request){
         $request = $request->validated();
+        $filter = app()->make(PostFilter::class,['queryParams' => array_filter($request)]);
+        $posts = Posts::filter($filter)->get();
+        dd($posts);
         if (isset($request['title'])) {
             $posts = Posts::where('title','like',"%{$request['title']}%")->get();
         }
