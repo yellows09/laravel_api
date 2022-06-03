@@ -1,11 +1,14 @@
+https://hot.exporntoons.net/watch/544189716_456239110
 <template>
     <div>
-        <div v-for="post in posts.data">
+        <div v-for="post in posts">
             <div v-for="p in post.posts">
-                {{ p.title }} <br>
-                {{ p.description }}
-                <br>
-                --------------------------------------------
+                <div>
+                    {{ p.title }} <br>
+                    {{ p.description }}
+                    <br>
+                    --------------------------------------------
+                </div>
             </div>
         </div>
     </div>
@@ -20,9 +23,17 @@
         },
 
         mounted(){
-            axios.get('/api/allData').then(response=>{
+            axios.get('/api/allData',{
+                headers: {
+                    "Accept": "application/json"
+                }
+            }).then(response=>{
                 this.posts = response.data;
+                console.log(this.posts)
             })
         }
     }
 </script>
+<style>
+
+</style>

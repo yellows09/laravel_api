@@ -14,12 +14,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+//Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//    return $request->user();
+//});
 
-Route::middleware('auth_api')->group(function () {
+//Route::middleware('auth_api')->group(function () {
     Route::get('/posts', [App\Http\Controllers\Api\PostController::class, 'index']);
+
+    Route::post('/registration',[\App\Http\Controllers\AuthController::class,'register']);
+
+    Route::post('/login',[\App\Http\Controllers\AuthController::class,'login']);
 
     Route::get('/post/{id}', [App\Http\Controllers\Api\PostController::class, 'show']);
 
@@ -30,5 +34,5 @@ Route::middleware('auth_api')->group(function () {
     Route::post('/deletePost', [\App\Http\Controllers\Api\PostController::class, 'deletePost']);
 
     Route::get('/allData', [App\Http\Controllers\Api\PostController::class, 'indexJson'])->name('allData');
-});
+//});
 

@@ -27,8 +27,13 @@ export default {
     },
 
     mounted() {
-        axios.get('/api/posts').then(response => {
+        axios.get('/api/posts',{
+            headers: {
+                "Accept": "application/json"
+            }
+        }).then(response => {
             this.posts = response.data;
+            console.log(this.posts)
         });
     },
     methods: {

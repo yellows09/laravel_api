@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use App\Events\NewUserRegistered;
+use App\Events\UserEvent;
+use App\Listeners\UserListener;
 use App\Listeners\UserMailSend;
 use App\Models\User;
 use App\Observers\UserObserver;
@@ -22,6 +24,9 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+        UserEvent::class => [
+            UserListener::class
+        ]
     ];
 
     /**

@@ -5,16 +5,11 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Filter\PostFilter;
 use App\Http\Requests\FilterRequest;
-use App\Http\Resources\CategoryResource;
 use App\Http\Resources\PostResource;
 use App\Models\Categories;
-use App\Models\CategoryPost;
-use App\Models\Post;
 use App\Models\Posts;
 use Illuminate\Http\Request;
-use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\DB;
-use Jenssegers\Agent\Agent;
+
 
 class PostController extends Controller
 {
@@ -38,7 +33,7 @@ class PostController extends Controller
 
     public function indexJson(Categories $categories)
     {
-        $posts = PostResource::collection(Categories::with('posts')->get());
+        $posts = Categories::with('posts')->get();
         return $posts;
     }
 

@@ -19,9 +19,9 @@
 
     @guest("web")
         <div class="topnav">
-            <a class="active" href="{{route("login")}}">Login</a>
-            <a href="{{route("registration")}}">Registration</a>
-            <a href="{{route("forgotPassword")}}">Forgot Password</a>
+{{--            <a class="active" href="{{route("login")}}">Login</a>--}}
+{{--            <a href="{{route("registration")}}">Registration</a>--}}
+{{--            <a href="{{route("forgotPassword")}}">Forgot Password</a>--}}
         </div>
     @endguest
 @endsection

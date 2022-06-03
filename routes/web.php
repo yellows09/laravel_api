@@ -50,4 +50,7 @@ Route::middleware("guest")->group(function () {
     Route::post('/login_process', [\App\Http\Controllers\AuthController::class, 'login'])->name('login_process');
 });
 
+//Route::get('{any}', function () {
+//    return view('vue');
+//})->where('any', '.*');
 

@@ -9,8 +9,19 @@ class Posts extends Model
 {
     use HasFactory;
     use Filterable;
+
     protected $guarded = false;
-    protected $fillable=['id','title','description'];
+    protected $fillable = ['id', 'title', 'description'];
+    /**
+     * Получить title.
+     *
+     * @param  string  $value
+     * @return string
+     */
+    protected function getTitleAttribute($value)
+    {
+        return ucfirst($value);
+    }
 //    public function categories(){
 //        return $this->belongsToMany(Categories::class);
 //    }

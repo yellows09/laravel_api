@@ -20,11 +20,10 @@
                    placeholder="Email"/>
 
             @error('email')
+            <p class="text-red-500">Ошибка ввода</p>
             <p class="text-red-500">{{ $message }}</p>
             @enderror
-
-            <p class="text-red-500">Ошибка ввода</p>
-
+            
             <input name="password" type="password" class="w-full h-12 border border-gray-800 rounded px-3 @error('password') border-red-500 @enderror"
                    placeholder="Пароль"/>
 
@@ -33,7 +32,7 @@
             @enderror
 
             <div>
-                <a href="#" class="font-medium text-blue-900 hover:bg-blue-300 rounded-md p-2">Забыли пароль?</a>
+                <a href="{{route('forgotPassword')}}" class="font-medium text-blue-900 hover:bg-blue-300 rounded-md p-2">Забыли пароль?</a>
             </div>
 
             <div>
